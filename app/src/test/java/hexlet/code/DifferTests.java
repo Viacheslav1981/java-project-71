@@ -39,7 +39,8 @@ public class DifferTests {
         assertEquals(resultStylish, actual);
 
         actual = String.valueOf(Differ.generate(filePath1, filePath2, ""));
-        String resultDefault = Files.lines(Paths.get(fileResultStylish)).reduce("", (a, b) -> a + b + "\n");
+        var path = Paths.get(fileResultStylish);
+        String resultDefault = Files.lines(path).reduce("", (a, b) -> a + b + "\n");
         assertEquals(resultDefault, actual);
 
         String fileResultPlain = "src/test/resources/fileResultPlain.txt";
