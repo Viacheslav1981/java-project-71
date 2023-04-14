@@ -52,10 +52,10 @@ public class App implements Callable<Integer> {
        // file1 = "src/test/resources/fileJsonNested1.json";
        // file2 = "src/test/resources/fileJsonNested2.json";
 
-        Path filepath1 = Paths.get(file1).toAbsolutePath().normalize();
-        Path filepath2 = Paths.get(file2).toAbsolutePath().normalize();
+       // Path filepath1 = Paths.get(file1).toAbsolutePath().normalize();
+       // Path filepath2 = Paths.get(file2).toAbsolutePath().normalize();
 
-        System.out.println(Differ.generate(filepath1, filepath2, format));
+        System.out.println(Differ.generate(file1, file2, format));
 
         return 0;
     }

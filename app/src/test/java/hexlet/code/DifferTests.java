@@ -17,13 +17,18 @@ public class DifferTests {
        // String file1 = "src/test/resources/fileJsonNested1.json";
       //  String file2 = "src/test/resources/fileJsonNested2.json";
 
-        Path filePath1 = Paths.get("src/test/resources/fileJsonNested1.json").toAbsolutePath().normalize();
-        Path filePath2 = Paths.get("src/test/resources/fileJsonNested2.json").toAbsolutePath().normalize();
+      //  Path filePath1 = Paths.get("src/test/resources/fileJsonNested1.json").toAbsolutePath().normalize();
+      //  Path filePath2 = Paths.get("src/test/resources/fileJsonNested2.json").toAbsolutePath().normalize();
 
+        String filePath1 = "src/test/resources/fileJsonNested1.json";
+        String filePath2 = "src/test/resources/fileJsonNested2.json";
+        /*
         String actual = String.valueOf(Differ.generate(filePath1, filePath2));
         String fileResult = "src/test/resources/fileResultStylish.txt";
         String result = Files.lines(Paths.get(fileResult)).reduce("", (a, b) -> a + b + "\n");
         assertEquals(result, actual);
+
+         */
 
         String actualStylish = String.valueOf(Differ.generate(filePath1, filePath2, "stylish"));
         String fileResultStylish = "src/test/resources/fileResultStylish.txt";

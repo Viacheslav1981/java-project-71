@@ -7,6 +7,7 @@ import hexlet.code.formatters.Stylish;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.TreeMap;
 
 public class Differ {
@@ -22,11 +23,15 @@ public class Differ {
         return Stylish.getStylish(mapFile1, mapFile2);
     }
 
-    public static StringBuilder generate(Path filepath1, Path filepath2, String format) throws Exception {
+    public static StringBuilder generate(String filepath1, String filepath2, String format) throws Exception {
 
         // Читаем файл
-        String content1 = Files.readString(filepath1);
-        String content2 = Files.readString(filepath2);
+
+        Path path1 = Paths.get(filepath1).toAbsolutePath().normalize();
+        Path path2 = Paths.get(filepath2).toAbsolutePath().normalize();
+
+        String content1 = Files.readString(path1);
+        String content2 = Files.readString(path2);
 
         TreeMap<String, Object> mapFile1 = Parser.parseFile(content1);
         TreeMap<String, Object> mapFile2 = Parser.parseFile(content2);
