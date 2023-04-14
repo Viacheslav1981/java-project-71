@@ -6,10 +6,11 @@ import java.io.IOException;
 import java.util.Map;
 
 public class Json {
-    public static StringBuilder getJsonOut(Map mapFile1, Map mapFile2) throws IOException {
+    public static String getJsonOut(Map<String, Object> mapFile1, Map<String, Object> mapFile2) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        StringBuilder resultStr =
-                new StringBuilder(objectMapper.writeValueAsString(Stylish.getStylish(mapFile1, mapFile2)));
+        String resultStr = objectMapper.writeValueAsString(Stylish.getStylish(mapFile1, mapFile2));
+       // StringBuilder resultStr =
+             //   new StringBuilder(objectMapper.writeValueAsString(Stylish.getStylish(mapFile1, mapFile2)));
 
         return resultStr;
     }
