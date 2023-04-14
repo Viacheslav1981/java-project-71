@@ -24,21 +24,21 @@ public class DifferTests {
 
         String actual = String.valueOf(Differ.generate(filePath1, filePath2));
         String fileResult = "src/test/resources/fileResultStylish.txt";
-        String result = Files.lines(Paths.get(fileResult)).reduce("", (a, b) -> a + b + "\n");
+        String result = Files.lines(Paths.get(fileResult)).reduce("", (a, b) -> a + "\n" + b);
         assertEquals(result, actual);
 
         String actualStylish = String.valueOf(Differ.generate(filePath1, filePath2, "stylish"));
         String fileResultStylish = "src/test/resources/fileResultStylish.txt";
-        String resultStylish = Files.lines(Paths.get(fileResultStylish)).reduce("", (a, b) -> a + b + "\n");
+        String resultStylish = Files.lines(Paths.get(fileResultStylish)).reduce("", (a, b) -> a + "\n" + b);
         assertEquals(resultStylish, actualStylish);
 
         String actualDefault = String.valueOf(Differ.generate(filePath1, filePath2, "default"));
         String fileResultDefault = "src/test/resources/fileResultStylish.txt";
-        String resultDefault = Files.lines(Paths.get(fileResultDefault)).reduce("", (a, b) -> a + b + "\n");
+        String resultDefault = Files.lines(Paths.get(fileResultDefault)).reduce("", (a, b) -> a + "\n" + b);
         assertEquals(resultDefault, actualDefault);
 
         String fileResultPlain = "src/test/resources/fileResultPlain.txt";
-        String resultPlain = Files.lines(Paths.get(fileResultPlain)).reduce("", (a, b) -> a + b + "\n");
+        String resultPlain = Files.lines(Paths.get(fileResultPlain)).reduce("", (a, b) -> a + "\n" + b);
         String actualPlain = String.valueOf(Differ.generate(filePath1, filePath2, "plain"));
         assertEquals(resultPlain, actualPlain);
 
