@@ -7,7 +7,7 @@ import java.util.TreeMap;
 public class Stylish {
     public static StringBuilder getStylish(Map<String, Object> mapFile1, Map<String, Object> mapFile2) {
 
-        StringBuilder resultStr = new StringBuilder("{" + '\n');
+        StringBuilder resultStr = new StringBuilder("{").append('\n');
 
         TreeMap<String, Object> commonMap = new TreeMap<>();
         commonMap.putAll(mapFile1);
