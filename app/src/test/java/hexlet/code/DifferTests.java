@@ -14,11 +14,11 @@ public class DifferTests {
     @Test
     public void generateTest() throws Exception {
 
-        String file1 = "src/test/resources/fileJsonNested1.json";
-        String file2 = "src/test/resources/fileJsonNested2.json";
+       // String file1 = "src/test/resources/fileJsonNested1.json";
+      //  String file2 = "src/test/resources/fileJsonNested2.json";
 
-        Path filePath1 = Paths.get(file1);
-        Path filePath2 = Paths.get(file2);
+        Path filePath1 = Paths.get("src/test/resources/fileJsonNested1.json").toAbsolutePath().normalize();
+        Path filePath2 = Paths.get("src/test/resources/fileJsonNested2.json").toAbsolutePath().normalize();
 
         String actual = String.valueOf(Differ.generate(filePath1, filePath2));
         String fileResult = "src/test/resources/fileResultStylish.txt";
