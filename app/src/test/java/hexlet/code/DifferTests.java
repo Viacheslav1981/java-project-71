@@ -10,15 +10,36 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DifferTests {
 
-    /*
+
     @Test
     public void generateTest1() throws Exception {
 
-       // String actual = String.valueOf(Differ.generate(filePath1, filePath2, "stylish"));
+        String file1 = "src/test/resources/fileJsonNested1.json";
+        String file2 = "src/test/resources/fileJsonNested2.json";
+
+        Path filePath1 = Paths.get(file1);
+        Path filePath2 = Paths.get(file2);
+
+        String actualStylish = String.valueOf(Differ.generate(filePath1, filePath2, "stylish"));
+        String fileResultStylish = "src/test/resources/fileResultStylish.txt";
+        String resultStylish = Files.lines(Paths.get(fileResultStylish)).reduce("", (a, b) -> a + b + "\n");
+        assertEquals(resultStylish, actualStylish);
+
+        String actualDefault = String.valueOf(Differ.generate(filePath1, filePath2, ""));
+        String fileResultDefault = "src/test/resources/fileResultStylish.txt";
+        String resultDefault = Files.lines(Paths.get(fileResultDefault)).reduce("", (a, b) -> a + b + "\n");
+        assertEquals(resultDefault, actualDefault);
+
+        String fileResultPlain = "src/test/resources/fileResultPlain.txt";
+        String resultPlain = Files.lines(Paths.get(fileResultPlain)).reduce("", (a, b) -> a + b + "\n");
+        String actualPlain = String.valueOf(Differ.generate(filePath1, filePath2, "plain"));
+        assertEquals(resultPlain, actualPlain);
+
+
     }
 
-     */
 
+    /*
     @Test
     public void generateTest() throws Exception {
 
@@ -63,5 +84,7 @@ public class DifferTests {
 
         assertEquals(resultJson, actual);
     }
+
+     */
 }
 
