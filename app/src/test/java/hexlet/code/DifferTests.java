@@ -20,6 +20,11 @@ public class DifferTests {
         Path filePath1 = Paths.get(file1);
         Path filePath2 = Paths.get(file2);
 
+        String actual = String.valueOf(Differ.generate(filePath1, filePath2));
+        String fileResult = "src/test/resources/fileResultStylish.txt";
+        String result = Files.lines(Paths.get(fileResult)).reduce("", (a, b) -> a + b + "\n");
+        assertEquals(result, actual);
+
         String actualStylish = String.valueOf(Differ.generate(filePath1, filePath2, "stylish"));
         String fileResultStylish = "src/test/resources/fileResultStylish.txt";
         String resultStylish = Files.lines(Paths.get(fileResultStylish)).reduce("", (a, b) -> a + b + "\n");
@@ -40,7 +45,6 @@ public class DifferTests {
         String actualJson = String.valueOf(Differ.generate(filePath1, filePath2, "json"));
 
         assertEquals(resultJson, actualJson);
-        
     }
 
 
