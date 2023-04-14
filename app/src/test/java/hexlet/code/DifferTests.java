@@ -12,7 +12,7 @@ public class DifferTests {
 
 
     @Test
-    public void generateTest1() throws Exception {
+    public void generateTest() throws Exception {
 
         String file1 = "src/test/resources/fileJsonNested1.json";
         String file2 = "src/test/resources/fileJsonNested2.json";
@@ -25,7 +25,7 @@ public class DifferTests {
         String resultStylish = Files.lines(Paths.get(fileResultStylish)).reduce("", (a, b) -> a + b + "\n");
         assertEquals(resultStylish, actualStylish);
 
-        String actualDefault = String.valueOf(Differ.generate(filePath1, filePath2, ""));
+        String actualDefault = String.valueOf(Differ.generate(filePath1, filePath2, "default"));
         String fileResultDefault = "src/test/resources/fileResultStylish.txt";
         String resultDefault = Files.lines(Paths.get(fileResultDefault)).reduce("", (a, b) -> a + b + "\n");
         assertEquals(resultDefault, actualDefault);
@@ -35,7 +35,12 @@ public class DifferTests {
         String actualPlain = String.valueOf(Differ.generate(filePath1, filePath2, "plain"));
         assertEquals(resultPlain, actualPlain);
 
+        String fileResultJson = "src/test/resources/fileResultJson.json";
+        String resultJson = Files.lines(Paths.get(fileResultJson)).reduce("", (a, b) -> a + b);
+        String actualJson = String.valueOf(Differ.generate(filePath1, filePath2, "json"));
 
+        assertEquals(resultJson, actualJson);
+        
     }
 
 
