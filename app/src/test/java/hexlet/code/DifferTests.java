@@ -10,6 +10,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DifferTests {
 
+    /*
+    @Test
+    public void generateTest1() throws Exception {
+
+       // String actual = String.valueOf(Differ.generate(filePath1, filePath2, "stylish"));
+    }
+
+     */
 
     @Test
     public void generateTest() throws Exception {
@@ -38,7 +46,7 @@ public class DifferTests {
         String resultStylish = Files.lines(Paths.get(fileResultStylish)).reduce("", (a, b) -> a + b + "\n");
         assertEquals(resultStylish, actual);
 
-        actual = String.valueOf(Differ.generate(filePath1, filePath2, ""));
+        actual = String.valueOf(Differ.generate(filePath1, filePath2, "default"));
         var path = Paths.get(fileResultStylish);
         String resultDefault = Files.lines(path).reduce("", (a, b) -> a + b + "\n");
         assertEquals(resultDefault, actual);
