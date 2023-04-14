@@ -2,8 +2,6 @@ package hexlet.code;
 
 import picocli.CommandLine;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.concurrent.Callable;
 
 @CommandLine.Command(name = "gendiff", mixinStandardHelpOptions = true, version = "auto help demo - picocli 3.0",
