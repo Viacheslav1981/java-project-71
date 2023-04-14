@@ -20,18 +20,18 @@ public class Stylish {
 
             if (mapFile1.containsKey(keyCommonMap) && (mapFile2.containsKey(keyCommonMap))) {
                 if (Objects.equals(mapFile1.get(keyCommonMap), mapFile2.get(keyCommonMap))) {
-                    resultStr.append("   ").append(keyCommonMap).append(": ").append(valueMap1).append('\n');
+                    resultStr.append("    ").append(keyCommonMap).append(": ").append(valueMap1).append('\n');
                 } else {
-                    resultStr.append(" - ").append(keyCommonMap).append(": ").append(valueMap1).append('\n');
-                    resultStr.append(" + ").append(keyCommonMap).append(": ").append(valueMap2).append('\n');
+                    resultStr.append("  - ").append(keyCommonMap).append(": ").append(valueMap1).append('\n');
+                    resultStr.append("  + ").append(keyCommonMap).append(": ").append(valueMap2).append('\n');
                 }
             }
 
             if (!(mapFile1.containsKey(keyCommonMap))) {
-                resultStr.append(" + ").append(keyCommonMap).append(": ").append(valueMap2).append('\n');
+                resultStr.append("  + ").append(keyCommonMap).append(": ").append(valueMap2).append('\n');
             }
             if (!(mapFile2.containsKey(keyCommonMap))) {
-                resultStr.append(" - ").append(keyCommonMap).append(": ").append(valueMap1).append('\n');
+                resultStr.append("  - ").append(keyCommonMap).append(": ").append(valueMap1).append('\n');
 
             }
         }
