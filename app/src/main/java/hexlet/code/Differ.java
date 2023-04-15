@@ -12,7 +12,7 @@ import java.util.TreeMap;
 
 public class Differ {
 
-    public static StringBuilder generate(String filepath1, String filepath2) throws IOException {
+    public static String generate(String filepath1, String filepath2) throws IOException {
 
         Path path1 = Paths.get(filepath1).toAbsolutePath().normalize();
         Path path2 = Paths.get(filepath2).toAbsolutePath().normalize();
@@ -24,7 +24,7 @@ public class Differ {
         TreeMap<String, Object> mapFile1 = Parser.parseFile(content1);
         TreeMap<String, Object> mapFile2 = Parser.parseFile(content2);
 
-        return Stylish.getStylish(mapFile1, mapFile2);
+        return Stylish.getStylish(mapFile1, mapFile2).toString();
     }
 
     public static String generate(String filepath1, String filepath2, String format) throws Exception {
