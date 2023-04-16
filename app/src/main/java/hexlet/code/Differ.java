@@ -41,13 +41,13 @@ public class Differ {
         TreeMap<String, Object> mapFile2 = Parser.parseFile(content2);
 
         if (format.equals("plain")) {
-            return Plain.getPlain(mapFile1, mapFile2).toString().replaceAll("\n","");
+            return Plain.getPlain(mapFile1, mapFile2).toString();
         }
         if (format.equals("json")) {
 
-            return Json.getJsonOut(mapFile1, mapFile2).replaceAll("\n","");
+            return Json.getJsonOut(mapFile1, mapFile2);
         }
-        return Stylish.getStylish(mapFile1, mapFile2).toString().replaceAll("\n","");
+        return Stylish.getStylish(mapFile1, mapFile2).toString();
     }
 
 }
