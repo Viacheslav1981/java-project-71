@@ -57,7 +57,7 @@ public class Plain {
             if (!(mapFile2.containsKey(keyCommonMap))) {
                 // resultStr.append("Property " + "'" + keyCommonMap + "'" + " was removed." + '\n');
                 resultStr.append("Property ").append("'").
-                          append(keyCommonMap).append("'").append(" was removed.").append('\n');
+                          append(keyCommonMap).append("'").append(" was removed").append('\n');
             }
         }
       //  resultStr.replaceAll("\n+", "\n")
