@@ -24,7 +24,7 @@ public class Differ {
         TreeMap<String, Object> mapFile1 = Parser.parseFile(content1);
         TreeMap<String, Object> mapFile2 = Parser.parseFile(content2);
 
-        return Stylish.getStylish(mapFile1, mapFile2).toString();
+        return Stylish.getStylish(mapFile1, mapFile2).toString().trim();
     }
 
     public static String generate(String filepath1, String filepath2, String format) throws Exception {
@@ -47,7 +47,7 @@ public class Differ {
 
             return Json.getJsonOut(mapFile1, mapFile2);
         }
-        return Stylish.getStylish(mapFile1, mapFile2).toString();
+        return Stylish.getStylish(mapFile1, mapFile2).toString().trim();
     }
 
 }
