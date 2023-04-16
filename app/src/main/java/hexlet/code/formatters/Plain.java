@@ -49,6 +49,7 @@ public class Plain {
                           append(keyCommonMap).append("'").append(" was removed.").append('\n');
             }
         }
-        return resultStr.append("\n");
+      //  return resultStr.append("\n");
+        return resultStr;
     }
 }
