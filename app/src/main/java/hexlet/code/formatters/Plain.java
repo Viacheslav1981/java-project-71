@@ -14,6 +14,9 @@ public class Plain {
         commonMap.putAll(mapFile2);
 
         for (Map.Entry<String, Object> entryCheck : commonMap.entrySet()) {
+
+          //  commonMap.entrySet().size();
+
             String keyCommonMap = entryCheck.getKey();
             Object valueMap1 = mapFile1.get(keyCommonMap);
             Object valueMap2 = mapFile2.get(keyCommonMap);
@@ -49,6 +52,7 @@ public class Plain {
                           append(keyCommonMap).append("'").append(" was removed.").append('\n');
             }
         }
+      //  resultStr.replaceAll("\n+", "\n")
       //  return resultStr.append("\n");
         return resultStr;
     }
