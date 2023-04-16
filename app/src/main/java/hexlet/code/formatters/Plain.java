@@ -21,6 +21,14 @@ public class Plain {
             Object valueMap1 = mapFile1.get(keyCommonMap);
             Object valueMap2 = mapFile2.get(keyCommonMap);
 
+            if (valueMap1 instanceof String) {
+                valueMap1 = "'" + valueMap1 + "'";
+            }
+
+            if (valueMap2 instanceof String) {
+                valueMap2 = "'" + valueMap2 + "'";
+            }
+
             if (valueMap1 instanceof Map || valueMap1 instanceof List) {
                 valueMap1 = "[complex value]";
             }
