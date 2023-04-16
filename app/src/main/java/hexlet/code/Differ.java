@@ -47,7 +47,6 @@ public class Differ {
 
             return Json.getJsonOut(mapFile1, mapFile2);
         }
-
         return Stylish.getStylish(mapFile1, mapFile2).toString();
     }
 

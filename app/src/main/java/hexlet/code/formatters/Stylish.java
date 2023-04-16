@@ -35,9 +35,7 @@ public class Stylish {
 
             }
         }
-
-        // return resultStr.append("}").append('\n');
-        return resultStr.append("}").append('\n');
-        //  return resultStr.append("}" + '"');
+      //  return resultStr.append("}").append('\n');
+        return resultStr.append("}");
     }
 }
