@@ -42,7 +42,7 @@ public class Differ {
 
         if (format.equals("plain")) {
            // return Plain.getPlain(mapFile1, mapFile2).toString().replaceAll("\n+", "\n");
-            return Plain.getPlain(mapFile1, mapFile2).toString().replaceAll("[\\\r\\\n]+","");
+            return Plain.getPlain(mapFile1, mapFile2).toString().trim();
         }
         if (format.equals("json")) {
 
