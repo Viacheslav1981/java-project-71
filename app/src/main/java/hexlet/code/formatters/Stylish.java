@@ -32,7 +32,6 @@ public class Stylish {
             }
             if (!(mapFile2.containsKey(keyCommonMap))) {
                 resultStr.append("  - ").append(keyCommonMap).append(": ").append(valueMap1).append('\n');
-
             }
         }
       //  return resultStr.append("}").append('\n');

@@ -2,6 +2,7 @@ package hexlet.code;
 
 import org.junit.jupiter.api.Test;
 
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -22,31 +23,32 @@ public class DifferTests {
         String filePath1 = "src/test/resources/fileJsonNested1.json";
         String filePath2 = "src/test/resources/fileJsonNested2.json";
 
-        String actual = String.valueOf(Differ.generate(filePath1, filePath2));
+        String actual = String.valueOf(Differ.generate(filePath1, filePath2).replaceAll("\n",""));
         String fileResult = "src/test/resources/fileResultStylish.txt";
-        String result = Files.lines(Paths.get(fileResult)).reduce("", (a, b) -> a + b + "\n");
+        String result = Files.lines(Paths.get(fileResult)).reduce("", (a, b) -> a + b);
+      //  String result = Files.readAllLines(Paths.get(fileResult)).reduce("", (a, b) -> a + b);
         assertEquals(result, actual);
 
-        String actualStylish = String.valueOf(Differ.generate(filePath1, filePath2, "stylish"));
+        String actualStylish = String.valueOf(Differ.generate(filePath1, filePath2, "stylish").replaceAll("\n",""));
         String fileResultStylish = "src/test/resources/fileResultStylish.txt";
-        String resultStylish = Files.lines(Paths.get(fileResultStylish)).reduce("", (a, b) -> a + b + "\n");
+        String resultStylish = Files.lines(Paths.get(fileResultStylish)).reduce("", (a, b) -> a + b);
         assertEquals(resultStylish, actualStylish);
 
-        String actualDefault = String.valueOf(Differ.generate(filePath1, filePath2, "default"));
+        String actualDefault = String.valueOf(Differ.generate(filePath1, filePath2, "default").replaceAll("\n",""));
         String fileResultDefault = "src/test/resources/fileResultStylish.txt";
-        String resultDefault = Files.lines(Paths.get(fileResultDefault)).reduce("", (a, b) -> a + b + "\n");
+        String resultDefault = Files.lines(Paths.get(fileResultDefault)).reduce("", (a, b) -> a + b);
         assertEquals(resultDefault, actualDefault);
 
         String fileResultPlain = "src/test/resources/fileResultPlain.txt";
-        String resultPlain = Files.lines(Paths.get(fileResultPlain)).reduce("", (a, b) -> a + b + "\n");
-        String actualPlain = String.valueOf(Differ.generate(filePath1, filePath2, "plain"));
+        String resultPlain = Files.lines(Paths.get(fileResultPlain)).reduce("", (a, b) -> a + b);
+        String actualPlain = String.valueOf(Differ.generate(filePath1, filePath2, "plain").replaceAll("\n",""));
         assertEquals(resultPlain, actualPlain);
 
         String fileResultJson = "src/test/resources/fileResultJson.json";
-        String resultJson = Files.lines(Paths.get(fileResultJson)).reduce("", (a, b) -> a + b);
+        String resultJson = Files.lines(Paths.get(fileResultJson)).reduce("", (a, b) -> a + b).replaceAll("\n","");
         //  StringBuilder resultJson = new StringBuilder(Files.lines(Paths.get(fileResultJson)).
         //  reduce("", (a, b) -> a + b));
-        String actualJson = String.valueOf(Differ.generate(filePath1, filePath2, "json"));
+        String actualJson = String.valueOf(Differ.generate(filePath1, filePath2, "json").replaceAll("\n",""));
         //  StringBuilder actualJson = Differ.generate(filePath1, filePath2, "json");
 
         assertEquals(resultJson, actualJson);
