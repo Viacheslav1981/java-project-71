@@ -22,6 +22,7 @@ public class Parser {
         }
       //  ObjectMapper objectMapper = new YAMLMapper();
 
+        assert objectMapper != null;
         TreeMap<String, Object> map = objectMapper.readValue(fileContent, new TypeReference<>() {
         });
 
