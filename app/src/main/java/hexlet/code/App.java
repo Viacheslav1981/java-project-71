@@ -44,11 +44,11 @@ public class App implements Callable<Integer> {
        // file1 = "src/test/resources/file1.json";
        // file2 = "src/test/resources/file2.json";
 
-        file1 = "src/test/resources/fileDiff1.yml";
-        file2 = "src/test/resources/fileDiff2.yml";
+       // file1 = "src/test/resources/fileDiff1.yml";
+       // file2 = "src/test/resources/fileDiff2.yml";
 
-       // file1 = "src/test/resources/fileJsonNested1.json";
-       // file2 = "src/test/resources/fileJsonNested2.json";
+        file1 = "src/test/resources/fileJsonNested1.json";
+        file2 = "src/test/resources/fileJsonNested2.json";
 
        // Path filepath1 = Paths.get(file1).toAbsolutePath().normalize();
        // Path filepath2 = Paths.get(file2).toAbsolutePath().normalize();

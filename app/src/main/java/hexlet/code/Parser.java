@@ -9,9 +9,19 @@ import java.util.TreeMap;
 
 public class Parser {
 
-    public static TreeMap<String, Object> parseFile(String fileContent) throws JsonProcessingException {
+    public static TreeMap<String, Object> parseFile(String fileContent, String extension) throws JsonProcessingException {
 
-        ObjectMapper objectMapper = new YAMLMapper();
+        ObjectMapper objectMapper = null;
+
+        if (extension.equals("yml")) {
+             objectMapper = new YAMLMapper();
+        }
+
+        if (extension.equals("json")) {
+             objectMapper = new ObjectMapper();
+        }
+      //  ObjectMapper objectMapper = new YAMLMapper();
+
         TreeMap<String, Object> map = objectMapper.readValue(fileContent, new TypeReference<>() {
         });
 
