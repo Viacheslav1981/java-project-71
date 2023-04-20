@@ -5,14 +5,14 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
-import java.util.Map;
 import java.util.TreeMap;
 
 public class Parser {
 
-    public static TreeMap<String, Object> parseFile(String fileContent, String extension) throws JsonProcessingException {
+    public static TreeMap<String, Object> parseFile(String fileContent,
+                                                    String extension) throws JsonProcessingException {
 
-        ObjectMapper objectMapper = null;
+        ObjectMapper objectMapper;
         TreeMap<String, Object> map = null;
 
         if (extension.equals("yml")) {

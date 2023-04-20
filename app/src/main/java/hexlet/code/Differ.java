@@ -1,7 +1,5 @@
 package hexlet.code;
 
-import hexlet.code.formatters.Json;
-import hexlet.code.formatters.Plain;
 import hexlet.code.formatters.Stylish;
 
 import java.io.IOException;
@@ -59,6 +57,8 @@ public class Differ {
         TreeMap<String, Object> mapFile1 = Parser.parseFile(content1, extension1);
         TreeMap<String, Object> mapFile2 = Parser.parseFile(content2, extension1);
 
+        return Formatter.formatter(mapFile1, mapFile2, format);
+        /*
         if (format.equals("plain")) {
             return Plain.getPlain(mapFile1, mapFile2).toString().trim();
         }
@@ -67,6 +67,8 @@ public class Differ {
             return Json.getJsonOut(mapFile1, mapFile2);
         }
         return Stylish.getStylish(mapFile1, mapFile2).toString().trim();
+
+         */
     }
 
 }

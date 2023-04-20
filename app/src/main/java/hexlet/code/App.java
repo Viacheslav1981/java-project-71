@@ -57,7 +57,6 @@ public class App implements Callable<Integer> {
        // Path filepath2 = Paths.get(file2).toAbsolutePath().normalize();
 
         System.out.println(Differ.generate(file1, file2, format));
-
         return 0;
     }
 }
