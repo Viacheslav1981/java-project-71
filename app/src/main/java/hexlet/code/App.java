@@ -9,20 +9,20 @@ import java.util.concurrent.Callable;
 public class App implements Callable<Integer> {
     @CommandLine.Option(names = {"-V", "--version"}, versionHelp = true,
             description = "Print version information and exit.")
-    boolean versionInfoRequested;
+   private boolean versionInfoRequested;
 
     @CommandLine.Option(names = {"-h", "--help"}, usageHelp = true, description = "Show this help message and exit.")
-    boolean usageHelpRequested;
+   private boolean usageHelpRequested;
 
     @CommandLine.Option(names = {"-f", "--format"}, defaultValue = "stylish",  paramLabel = "format",
                       description = "output format [default: stylish]")
-    public static String format;
+    private static String format;
 
     @CommandLine.Parameters(index = "0", description = "path to first file")
-    public static String file1;
+    private static String file1;
 
     @CommandLine.Parameters(index = "1",  description = "path to second file")
-    public static String file2;
+    private static String file2;
 
     public static void main(String[] args) {
 
@@ -31,8 +31,48 @@ public class App implements Callable<Integer> {
 
     }
 
-    @Override
-    public Integer call() throws Exception {
+    public boolean isVersionInfoRequested() {
+        return versionInfoRequested;
+    }
+
+    public void setVersionInfoRequested(boolean versionInfoRequested) {
+        this.versionInfoRequested = versionInfoRequested;
+    }
+
+    public boolean isUsageHelpRequested() {
+        return usageHelpRequested;
+    }
+
+    public void setUsageHelpRequested(boolean usageHelpRequested) {
+        this.usageHelpRequested = usageHelpRequested;
+    }
+
+    public static String getFormat() {
+        return format;
+    }
+
+    public static void setFormat(String format) {
+        App.format = format;
+    }
+
+    public static String getFile1() {
+        return file1;
+    }
+
+    public static void setFile1(String file1) {
+        App.file1 = file1;
+    }
+
+    public static String getFile2() {
+        return file2;
+    }
+
+    public static void setFile2(String file2) {
+        App.file2 = file2;
+    }
+
+   // @Override
+    public final Integer call() throws Exception {
 
 
         // Path filepath1 = Paths.get(file1).toAbsolutePath().normalize();
