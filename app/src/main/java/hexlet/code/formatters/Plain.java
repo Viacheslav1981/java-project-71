@@ -37,9 +37,6 @@ public class Plain {
 
             if (mapFile1.containsKey(keyCommonMap) && (mapFile2.containsKey(keyCommonMap))) {
                 if (!Objects.equals(mapFile1.get(keyCommonMap), mapFile2.get(keyCommonMap))) {
-                    // resultStr.append("Property " + "'" + keyCommonMap + "' "
-                    //         + "was updated. " + "From " + valueMap1 + " to " + valueMap2 + '\n');
-
                     resultStr.append("Property ").append("'").append(keyCommonMap).append("' ").
                             append("was updated. ").append("From ").append(valueMap1).
                             append(" to ").append(valueMap2).append('\n');
@@ -47,15 +44,12 @@ public class Plain {
             }
 
             if (!(mapFile1.containsKey(keyCommonMap))) {
-                //  resultStr.append("Property " + "'" + keyCommonMap + "'"
-                //        + " was added with value: " + valueMap2 + '\n');
                 resultStr.append("Property ").append("'").append(keyCommonMap).
                         append("'").append(" was added with value: ").append(valueMap2).append('\n');
             }
             if (!(mapFile2.containsKey(keyCommonMap))) {
-                // resultStr.append("Property " + "'" + keyCommonMap + "'" + " was removed." + '\n');
                 resultStr.append("Property ").append("'").
-                          append(keyCommonMap).append("'").append(" was removed").append('\n');
+                        append(keyCommonMap).append("'").append(" was removed").append('\n');
             }
         }
 
