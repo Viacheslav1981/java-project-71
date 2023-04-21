@@ -48,8 +48,10 @@ public class Differ {
             extension1 = "yml";
         }
 
-        Path path1 = Paths.get(filepath1).toAbsolutePath().normalize();
-        Path path2 = Paths.get(filepath2).toAbsolutePath().normalize();
+       // Path path1 = Paths.get(filepath1).toAbsolutePath().normalize();
+        Path path1 = Paths.get(filepath1);
+       // Path path2 = Paths.get(filepath2).toAbsolutePath().normalize();
+        Path path2 = Paths.get(filepath2);
 
         String content1 = Files.readString(path1);
         String content2 = Files.readString(path2);

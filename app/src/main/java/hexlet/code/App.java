@@ -18,10 +18,10 @@ public class App implements Callable<Integer> {
                       description = "output format [default: stylish]")
     public static String format;
 
-    @CommandLine.Parameters(index = "0", paramLabel = "filepath1", description = "path to first file")
+    @CommandLine.Parameters(index = "0", description = "path to first file")
     public static String file1;
 
-    @CommandLine.Parameters(index = "1", paramLabel = "filepath2",  description = "path to second file")
+    @CommandLine.Parameters(index = "1",  description = "path to second file")
     public static String file2;
 
     public static void main(String[] args) {

@@ -28,6 +28,9 @@ test {
     finalizedBy jacocoTestReport
 }
 
+compileJava {
+    options.release = 17
+}
 
 jacocoTestReport {
     reports {
