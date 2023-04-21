@@ -6,7 +6,7 @@ import java.util.concurrent.Callable;
 
 @CommandLine.Command(name = "gendiff", mixinStandardHelpOptions = true, version = "auto help demo - picocli 3.0",
         description = "Compares two configuration files and shows a difference.")
-public class App implements Callable<Integer> {
+public final class App implements Callable<Integer> {
     @CommandLine.Option(names = {"-V", "--version"}, versionHelp = true,
             description = "Print version information and exit.")
    private boolean versionInfoRequested;
@@ -31,7 +31,7 @@ public class App implements Callable<Integer> {
 
     }
 
-    public boolean isVersionInfoRequested() {
+    public  boolean isVersionInfoRequested() {
         return versionInfoRequested;
     }
 
@@ -72,7 +72,7 @@ public class App implements Callable<Integer> {
     }
 
    // @Override
-    public final Integer call() throws Exception {
+    public  Integer call() throws Exception {
 
 
         // Path filepath1 = Paths.get(file1).toAbsolutePath().normalize();
