@@ -22,8 +22,8 @@ public class Stylish {
                 if (Objects.equals(mapFile1.get(keyCommonMap), mapFile2.get(keyCommonMap))) {
                     resultStr.append("    ").append(keyCommonMap).append(": ").append(valueMap1).append('\n');
                 } else {
-                    resultStr.append("  - ").append(keyCommonMap).append(": ").append(valueMap1).append('\n');
-                    resultStr.append("  + ").append(keyCommonMap).append(": ").append(valueMap2).append('\n');
+                    resultStr.append("  - ").append(keyCommonMap).append(": ").append(valueMap1).append('\n')
+                             .append("  + ").append(keyCommonMap).append(": ").append(valueMap2).append('\n');
                 }
             }
 
@@ -34,7 +34,6 @@ public class Stylish {
                 resultStr.append("  - ").append(keyCommonMap).append(": ").append(valueMap1).append('\n');
             }
         }
-      //  return resultStr.append("}").append('\n');
         return resultStr.append("}");
     }
 }
