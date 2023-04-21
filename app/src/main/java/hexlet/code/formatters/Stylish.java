@@ -34,6 +34,7 @@ public class Stylish {
                 resultStr.append("  - ").append(keyCommonMap).append(": ").append(valueMap1).append('\n');
             }
         }
+
         return resultStr.append("}");
     }
 }
