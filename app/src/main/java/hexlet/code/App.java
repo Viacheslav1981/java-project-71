@@ -73,8 +73,8 @@ public final class App implements Callable<Integer> {
 
    // @Override
     public  Integer call() throws Exception {
-        String path1 = "src/test/resources/" + file1;
-        String path2 = "src/test/resources/" + file2;
+       // String path1 = "src/test/resources/" + file1;
+     //   String path2 = "src/test/resources/" + file2;
 
 
         // Path filepath1 = Paths.get(file1).toAbsolutePath().normalize();
@@ -98,7 +98,7 @@ public final class App implements Callable<Integer> {
        // Path filepath1 = Paths.get(file1).toAbsolutePath().normalize();
        // Path filepath2 = Paths.get(file2).toAbsolutePath().normalize();
 
-        System.out.println(Differ.generate(path1, path2, format));
+        System.out.println(Differ.generate(file1, file2, format));
         return 0;
     }
 }
