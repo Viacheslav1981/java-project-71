@@ -39,7 +39,7 @@ public class Differ {
 
         // Читаем файл
         String extension1 = "";
-       // String extension2 = "";
+        // String extension2 = "";
         if (filepath1.endsWith(".json")) {
             extension1 = "json";
         }
@@ -48,10 +48,10 @@ public class Differ {
             extension1 = "yml";
         }
 
-       // Path path1 = Paths.get(filepath1).toAbsolutePath().normalize();
-        Path path1 = Paths.get(filepath1);
-       // Path path2 = Paths.get(filepath2).toAbsolutePath().normalize();
-        Path path2 = Paths.get(filepath2);
+        Path path1 = Paths.get(filepath1).toAbsolutePath().normalize();
+        //  Path path1 = Paths.get(filepath1);
+        Path path2 = Paths.get(filepath2).toAbsolutePath().normalize();
+        //   Path path2 = Paths.get(filepath2);
 
         String content1 = Files.readString(path1);
         String content2 = Files.readString(path2);
