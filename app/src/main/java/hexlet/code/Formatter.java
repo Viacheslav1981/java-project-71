@@ -13,14 +13,18 @@ public class Formatter {
                                    Map<String, Object> mapFile2,
                                    String format) throws IOException {
 
-        if (format.equals("plain")) {
-            return Plain.getPlain(mapFile1, mapFile2).toString().trim();
-        }
-        if (format.equals("json")) {
+        switch (format) {
+            case ("plain") -> {
+                return Plain.getPlain(mapFile1, mapFile2).toString().trim();
+            }
+            case ("json") -> {
+                return Json.getJsonOut(mapFile1, mapFile2);
+            }
+            default -> {
+                return Stylish.getStylish(mapFile1, mapFile2).toString().trim();
+            }
 
-            return Json.getJsonOut(mapFile1, mapFile2);
         }
-        return Stylish.getStylish(mapFile1, mapFile2).toString().trim();
     }
 
 }

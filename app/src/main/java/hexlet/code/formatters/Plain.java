@@ -18,22 +18,8 @@ public class Plain {
             String keyCommonMap = entryCheck.getKey();
             Object valueMap1 = mapFile1.get(keyCommonMap);
             Object valueMap2 = mapFile2.get(keyCommonMap);
-
-            if (valueMap1 instanceof String) {
-                valueMap1 = "'" + valueMap1 + "'";
-            }
-
-            if (valueMap2 instanceof String) {
-                valueMap2 = "'" + valueMap2 + "'";
-            }
-
-            if (valueMap1 instanceof Map || valueMap1 instanceof List) {
-                valueMap1 = "[complex value]";
-            }
-
-            if (valueMap2 instanceof Map || valueMap2 instanceof List) {
-                valueMap2 = "[complex value]";
-            }
+            valueMap1 = getValueFormat(valueMap1);
+            valueMap2 = getValueFormat(valueMap2);
 
             if (mapFile1.containsKey(keyCommonMap) && (mapFile2.containsKey(keyCommonMap))) {
                 if (!Objects.equals(mapFile1.get(keyCommonMap), mapFile2.get(keyCommonMap))) {
@@ -54,5 +40,17 @@ public class Plain {
         }
 
         return resultStr;
+    }
+
+    public static Object getValueFormat(Object valueMap) {
+        Object retValueFormat = valueMap;
+        if (valueMap instanceof String) {
+            retValueFormat = "'" + valueMap + "'";
+        }
+
+        if (valueMap instanceof Map || valueMap instanceof List) {
+            retValueFormat = "[complex value]";
+        }
+        return retValueFormat;
     }
 }

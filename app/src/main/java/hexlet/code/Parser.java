@@ -5,33 +5,31 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
+import java.nio.file.NoSuchFileException;
 import java.util.TreeMap;
 
 public class Parser {
 
     public static TreeMap<String, Object> parseFile(String fileContent,
-                                                    String extension) throws JsonProcessingException {
+                                                    String extension)
+            throws NoSuchFileException, JsonProcessingException {
 
         ObjectMapper objectMapper;
-        TreeMap<String, Object> map = null;
+        TreeMap<String, Object> map;
 
         if (extension.equals("yml")) {
             objectMapper = new YAMLMapper();
             map = objectMapper.readValue(fileContent, new TypeReference<>() {
             });
-        }
-
-        if (extension.equals("json")) {
+        } else if (extension.equals("json")) {
             objectMapper = new ObjectMapper();
             map = objectMapper.readValue(fileContent, new TypeReference<>() {
             });
+        } else {
+            throw new NoSuchFileException("bad extension");
         }
-        //  ObjectMapper objectMapper = new YAMLMapper();
-        //  TreeMap<String, Object> map = objectMapper.readValue(fileContent, new TypeReference<>() {
-        //   });
 
         return map;
 
     }
-
 }
