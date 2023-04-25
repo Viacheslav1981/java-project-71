@@ -16,12 +16,8 @@ public class Plain {
         for (Map.Entry<String, Object> entryCheck : commonMap.entrySet()) {
 
             String keyCommonMap = entryCheck.getKey();
-           // Object valueMap1 = mapFile1.get(keyCommonMap);
-         //   Object valueMap2 = mapFile2.get(keyCommonMap);
             Object valueMap1 = getValueFormat(mapFile1.get(keyCommonMap));
             Object valueMap2 = getValueFormat(mapFile2.get(keyCommonMap));
-          //  valueMap1 = getValueFormat(valueMap1);
-         //   valueMap2 = getValueFormat(valueMap2);
 
             if (mapFile1.containsKey(keyCommonMap) && (mapFile2.containsKey(keyCommonMap))) {
                 if (!Objects.equals(mapFile1.get(keyCommonMap), mapFile2.get(keyCommonMap))) {

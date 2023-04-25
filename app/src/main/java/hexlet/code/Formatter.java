@@ -23,7 +23,6 @@ public class Formatter {
             default -> {
                 return Stylish.getStylish(mapFile1, mapFile2).toString().trim();
             }
-
         }
     }
 
