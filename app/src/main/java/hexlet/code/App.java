@@ -32,8 +32,8 @@ public final class App implements Callable<Integer> {
     }
 
     public Integer call() throws Exception {
-       // filePath1 = "src/test/resources/fileJsonNested1.json";
-      //  filePath2 = "src/test/resources/fileJsonNested2.json";
+        filePath1 = "src/test/resources/fileJsonNested1.json";
+        filePath2 = "src/test/resources/fileJsonNested2.json";
 
         System.out.println(Differ.generate(filePath1, filePath2, format));
         return 0;
