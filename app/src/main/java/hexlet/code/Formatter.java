@@ -8,6 +8,19 @@ import java.io.IOException;
 import java.util.Map;
 
 public class Formatter {
+    /*
+    public static String format(List<Map<NodeName, Object>> diffList, String format) throws JsonProcessingException {
+        return switch (format.toLowerCase()) {
+            case PLAIN -> PlainFormatter.formatMap(diffList);
+            case STYLISH -> StylishFormatter.formatMap(diffList);
+            case JSON -> JsonFormatter.formatMap(diffList);
+            default -> throw new IllegalArgumentException(
+                    String.format("Unsupported format. Supported: %s, %s, %s", STYLISH, PLAIN, JSON)
+            );
+        };
+    }
+
+     */
 
     public static String formatter(Map<String, Object> mapFile1,
                                    Map<String, Object> mapFile2,

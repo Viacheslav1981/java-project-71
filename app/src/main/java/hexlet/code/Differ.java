@@ -1,21 +1,17 @@
 package hexlet.code;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 import java.util.TreeMap;
 
 public class Differ {
 
     public static String getExtension(String filePath) {
-        String extension = "";
-        if (filePath.endsWith(".json")) {
-            extension = "json";
-        }
-        if (filePath.endsWith(".yml")) {
-            extension = "yml";
-        }
-        return extension;
+
+        return filePath.substring(filePath.indexOf(".") + 1);
     }
 
     public static String generate(String filepath1, String filepath2) throws Exception {
@@ -24,21 +20,35 @@ public class Differ {
 
     public static String generate(String filepath1, String filepath2, String format) throws Exception {
 
-        String extension1 = getExtension(filepath1);
-        String extension2 = getExtension(filepath2);
+        Map<String, String> mapForParsing1 = getMapFileContent(filepath1);
+        Map<String, String> mapForParsing2 = getMapFileContent(filepath2);
 
+        Map<String, Object> mapFile1 = new TreeMap<>();
+        Map<String, Object> mapFile2 = new TreeMap<>();
 
-        Path path1 = Paths.get(filepath1).toAbsolutePath().normalize();
-        Path path2 = Paths.get(filepath2).toAbsolutePath().normalize();
-
-        String content1 = Files.readString(path1);
-        String content2 = Files.readString(path2);
-
-        TreeMap<String, Object> mapFile1 = Parser.parseFile(content1, extension1);
-        TreeMap<String, Object> mapFile2 = Parser.parseFile(content2, extension2);
+        for (Map.Entry<String, String> oneFile : mapForParsing1.entrySet()) {
+            mapFile1 = Parser.parseFile(oneFile.getKey(),
+                    oneFile.getValue());
+        }
+        for (Map.Entry<String, String> oneFile : mapForParsing2.entrySet()) {
+            mapFile2 = Parser.parseFile(oneFile.getKey(),
+                    oneFile.getValue());
+        }
 
         return Formatter.formatter(mapFile1, mapFile2, format);
 
+    }
+
+    private static Map<String, String> getMapFileContent(String filepath) throws IOException {
+        Map<String, String> fileMap = new TreeMap<>();
+
+        String extension = getExtension(filepath);
+        Path path = Paths.get(filepath).toAbsolutePath().normalize();
+        String content = Files.readString(path);
+
+        fileMap.put(content, extension);
+
+        return fileMap;
     }
 
 }
