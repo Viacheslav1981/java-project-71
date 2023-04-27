@@ -11,6 +11,11 @@ public class DifferTests {
 
     @Test
     public void generateTest() throws Exception {
+        // filePath1 = "src/test/resources/fileJsonNested1.json";
+        // filePath2 = "src/test/resources/fileJsonNested2.json";
+
+        //  filePath1 = "src/test/resources/file1.json";
+        //   filePath2 = "src/test/resources/file2.json";
 
         // String file1 = "src/test/resources/fileJsonNested1.json";
         //  String file2 = "src/test/resources/fileJsonNested2.json";

@@ -21,7 +21,7 @@ public class Stylish {
             Object valueMap2 = mapFile2.get(keyCommonMap);
 
             if (mapFile1.containsKey(keyCommonMap) && (mapFile2.containsKey(keyCommonMap))) {
-                if (Objects.equals(mapFile1.get(keyCommonMap), mapFile2.get(keyCommonMap))) {
+                if (Objects.equals(valueMap1, valueMap2)) {
                     strings.add(String.format("    %s: %s\n", keyCommonMap, valueMap1));
 
                 } else {
