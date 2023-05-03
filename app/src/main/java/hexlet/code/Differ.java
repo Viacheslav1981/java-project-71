@@ -1,5 +1,7 @@
 package hexlet.code;
 
+import hexlet.code.formatters.Stylish;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -34,6 +36,9 @@ public class Differ {
             mapFile2 = Parser.parseFile(oneFile.getKey(),
                     oneFile.getValue());
         }
+
+       // Format.getDifferList(mapFile1, mapFile2);
+        System.out.println(Stylish.getStylishTest(Format.getDifferList(mapFile1, mapFile2)));
 
         return Formatter.formatter(mapFile1, mapFile2, format);
 
