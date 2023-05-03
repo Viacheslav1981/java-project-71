@@ -1,6 +1,6 @@
 package hexlet.code;
 
-public class NodeName {
+public final class NodeName {
 
     private String key;
     private Object value;
