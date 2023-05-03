@@ -1,15 +1,64 @@
 package hexlet.code;
 
-import hexlet.code.formatters.Stylish;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Map;
+import java.util.ArrayList;
 import java.util.TreeMap;
+import java.util.Objects;
 
 public class Differ {
+
+    public static List<NodeName> getDifferList(Map<String, Object> mapFile1,
+                                               Map<String, Object> mapFile2) {
+
+        List<NodeName> differList = new ArrayList<>();
+
+        TreeMap<String, Object> commonMap = new TreeMap<>();
+        commonMap.putAll(mapFile1);
+        commonMap.putAll(mapFile2);
+
+        for (Map.Entry<String, Object> entryCheck : commonMap.entrySet()) {
+            String keyCommonMap = entryCheck.getKey();
+            Object valueMap1 = mapFile1.get(keyCommonMap);
+            Object valueMap2 = mapFile2.get(keyCommonMap);
+            NodeName nodeName = new NodeName();
+
+            if (mapFile1.containsKey(keyCommonMap) && (mapFile2.containsKey(keyCommonMap))) {
+                if (Objects.equals(valueMap1, valueMap2)) {
+                    nodeName.setKey(keyCommonMap);
+                    nodeName.setValue(valueMap1);
+                    nodeName.setType(NodeStatus.UNCHANGED);
+                    differList.add(nodeName);
+
+                } else {
+                    nodeName.setKey(keyCommonMap);
+                    nodeName.setValue(valueMap1);
+                    nodeName.setUpdatedValue(valueMap2);
+                    nodeName.setType(NodeStatus.UPDATED);
+                    differList.add(nodeName);
+                }
+            }
+            if (!(mapFile1.containsKey(keyCommonMap))) {
+                nodeName.setKey(keyCommonMap);
+                nodeName.setValue(valueMap2);
+                nodeName.setType(NodeStatus.ADDED);
+                differList.add(nodeName);
+
+            }
+            if (!(mapFile2.containsKey(keyCommonMap))) {
+                nodeName.setKey(keyCommonMap);
+                nodeName.setValue(valueMap1);
+                nodeName.setType(NodeStatus.REMOVED);
+                differList.add(nodeName);
+            }
+        }
+
+        return differList;
+    }
 
     public static String getExtension(String filePath) {
 
@@ -37,10 +86,9 @@ public class Differ {
                     oneFile.getValue());
         }
 
-       // Format.getDifferList(mapFile1, mapFile2);
-        System.out.println(Stylish.getStylishTest(Format.getDifferList(mapFile1, mapFile2)));
+        List<NodeName> differList = getDifferList(mapFile1, mapFile2);
 
-        return Formatter.formatter(mapFile1, mapFile2, format);
+        return Formatter.formatter(differList, format);
 
     }
 

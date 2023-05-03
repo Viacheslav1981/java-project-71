@@ -29,9 +29,6 @@ public class DifferTests {
         String filePath2 = "src/test/resources/fileJsonNested2.json";
 
 
-
-        System.out.println(Differ.getExtension(filePath1));
-
         //  String actual = String.valueOf(Differ.generate(filePath1, filePath2).replaceAll("\n", ""));
         String actual = Differ.generate(filePath1, filePath2);
         String fileResult = "src/test/resources/fileResultStylish.txt";

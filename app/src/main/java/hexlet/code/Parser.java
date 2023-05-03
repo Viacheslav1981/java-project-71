@@ -30,6 +30,5 @@ public class Parser {
         }
 
         return map;
-
     }
 }

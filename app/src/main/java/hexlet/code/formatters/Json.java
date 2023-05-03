@@ -1,15 +1,15 @@
 package hexlet.code.formatters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import hexlet.code.NodeName;
 
 import java.io.IOException;
-import java.util.Map;
+import java.util.List;
 
 public class Json {
-    public static String getJsonOut(Map<String, Object> mapFile1, Map<String, Object> mapFile2) throws IOException {
+    public static String getJsonOut(List<NodeName> differList) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        String resultStr = objectMapper.writeValueAsString(Stylish.getStylish(mapFile1, mapFile2));
+        return objectMapper.writeValueAsString(differList);
 
-        return resultStr;
     }
 }
