@@ -28,21 +28,17 @@ public class Differ {
 
             if (mapFile1.containsKey(keyCommonMap) && (mapFile2.containsKey(keyCommonMap))) {
                 if (Objects.equals(valueMap1, valueMap2)) {
-                    differList.add(new NodeName(NodeStatus.UNCHANGED, keyCommonMap,
-                            valueMap1, valueMap2));
+                    differList.add(new NodeName(NodeStatus.UNCHANGED, keyCommonMap, valueMap1, valueMap2));
 
                 } else {
-                    differList.add(new NodeName(NodeStatus.UPDATED, keyCommonMap,
-                            valueMap1, valueMap2));
+                    differList.add(new NodeName(NodeStatus.UPDATED, keyCommonMap, valueMap1, valueMap2));
                 }
             }
             if (!(mapFile1.containsKey(keyCommonMap))) {
-                differList.add(new NodeName(NodeStatus.ADDED, keyCommonMap,
-                        valueMap2, null));
+                differList.add(new NodeName(NodeStatus.ADDED, keyCommonMap, valueMap2, null));
             }
             if (!(mapFile2.containsKey(keyCommonMap))) {
-                differList.add(new NodeName(NodeStatus.REMOVED, keyCommonMap,
-                        valueMap1, null));
+                differList.add(new NodeName(NodeStatus.REMOVED, keyCommonMap, valueMap1, null));
             }
         }
         return differList;
