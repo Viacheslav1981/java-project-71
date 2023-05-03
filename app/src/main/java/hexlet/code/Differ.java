@@ -25,38 +25,26 @@ public class Differ {
             String keyCommonMap = entryCheck.getKey();
             Object valueMap1 = mapFile1.get(keyCommonMap);
             Object valueMap2 = mapFile2.get(keyCommonMap);
-            NodeName nodeName = new NodeName();
 
             if (mapFile1.containsKey(keyCommonMap) && (mapFile2.containsKey(keyCommonMap))) {
                 if (Objects.equals(valueMap1, valueMap2)) {
-                    nodeName.setKey(keyCommonMap);
-                    nodeName.setValue(valueMap1);
-                    nodeName.setType(NodeStatus.UNCHANGED);
-                    differList.add(nodeName);
+                    differList.add(new NodeName(NodeStatus.UNCHANGED, keyCommonMap,
+                            valueMap1, valueMap2));
 
                 } else {
-                    nodeName.setKey(keyCommonMap);
-                    nodeName.setValue(valueMap1);
-                    nodeName.setUpdatedValue(valueMap2);
-                    nodeName.setType(NodeStatus.UPDATED);
-                    differList.add(nodeName);
+                    differList.add(new NodeName(NodeStatus.UPDATED, keyCommonMap,
+                            valueMap1, valueMap2));
                 }
             }
             if (!(mapFile1.containsKey(keyCommonMap))) {
-                nodeName.setKey(keyCommonMap);
-                nodeName.setValue(valueMap2);
-                nodeName.setType(NodeStatus.ADDED);
-                differList.add(nodeName);
-
+                differList.add(new NodeName(NodeStatus.ADDED, keyCommonMap,
+                        valueMap2, null));
             }
             if (!(mapFile2.containsKey(keyCommonMap))) {
-                nodeName.setKey(keyCommonMap);
-                nodeName.setValue(valueMap1);
-                nodeName.setType(NodeStatus.REMOVED);
-                differList.add(nodeName);
+                differList.add(new NodeName(NodeStatus.REMOVED, keyCommonMap,
+                        valueMap1, null));
             }
         }
-
         return differList;
     }
 

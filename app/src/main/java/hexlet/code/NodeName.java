@@ -1,18 +1,20 @@
 package hexlet.code;
 
 public final class NodeName {
-
-    private String key;
+    private final NodeStatus type;
+    private final String key;
     private Object value;
-    private Object updatedValue;
-    private NodeStatus type;
+    private final Object updatedValue;
+
+    public NodeName(NodeStatus type, String key, Object value, Object updatedValue) {
+        this.type = type;
+        this.key = key;
+        this.value = value;
+        this.updatedValue = updatedValue;
+    }
 
     public String getKey() {
         return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
     }
 
     public Object getValue() {
@@ -27,15 +29,8 @@ public final class NodeName {
         return updatedValue;
     }
 
-    public void setUpdatedValue(Object updatedValue) {
-        this.updatedValue = updatedValue;
-    }
-
     public NodeStatus getType() {
         return type;
     }
 
-    public void setType(NodeStatus type) {
-        this.type = type;
-    }
 }
