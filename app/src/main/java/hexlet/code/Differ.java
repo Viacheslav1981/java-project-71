@@ -41,8 +41,6 @@ public class Differ {
                 }
             }
         }
-
-
         /*
         for (String key : allKeys) {
             Object valueMap1 = mapFile1.get(key);
