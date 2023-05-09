@@ -4,11 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
-import java.util.Map;
-import java.util.ArrayList;
-import java.util.TreeMap;
-import java.util.Objects;
+import java.util.*;
 
 public class Differ {
 
@@ -16,29 +12,28 @@ public class Differ {
                                                Map<String, Object> mapFile2) {
 
         List<NodeName> differList = new ArrayList<>();
+        Set<String> allKeys = new TreeSet<>();
 
-        TreeMap<String, Object> commonMap = new TreeMap<>();
-        commonMap.putAll(mapFile1);
-        commonMap.putAll(mapFile2);
+        allKeys.addAll(mapFile1.keySet());
+        allKeys.addAll(mapFile2.keySet());
 
-        for (Map.Entry<String, Object> entryCheck : commonMap.entrySet()) {
-            String keyCommonMap = entryCheck.getKey();
-            Object valueMap1 = mapFile1.get(keyCommonMap);
-            Object valueMap2 = mapFile2.get(keyCommonMap);
+        for (String key : allKeys) {
+            Object valueMap1 = mapFile1.get(key);
+            Object valueMap2 = mapFile2.get(key);
 
-            if (mapFile1.containsKey(keyCommonMap) && (mapFile2.containsKey(keyCommonMap))) {
+            if (mapFile1.containsKey(key) && (mapFile2.containsKey(key))) {
                 if (Objects.equals(valueMap1, valueMap2)) {
-                    differList.add(new NodeName(NodeStatus.UNCHANGED, keyCommonMap, valueMap1, valueMap2));
+                    differList.add(new NodeName(NodeStatus.UNCHANGED, key, valueMap1, valueMap2));
 
                 } else {
-                    differList.add(new NodeName(NodeStatus.UPDATED, keyCommonMap, valueMap1, valueMap2));
+                    differList.add(new NodeName(NodeStatus.UPDATED, key, valueMap1, valueMap2));
                 }
             }
-            if (!(mapFile1.containsKey(keyCommonMap))) {
-                differList.add(new NodeName(NodeStatus.ADDED, keyCommonMap, valueMap2, null));
+            if (!(mapFile1.containsKey(key))) {
+                differList.add(new NodeName(NodeStatus.ADDED, key, valueMap2, null));
             }
-            if (!(mapFile2.containsKey(keyCommonMap))) {
-                differList.add(new NodeName(NodeStatus.REMOVED, keyCommonMap, valueMap1, null));
+            if (!(mapFile2.containsKey(key))) {
+                differList.add(new NodeName(NodeStatus.REMOVED, key, valueMap1, null));
             }
         }
         return differList;
