@@ -4,7 +4,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.TreeMap;
 
 public class Differ {
 
@@ -17,6 +23,27 @@ public class Differ {
         allKeys.addAll(mapFile1.keySet());
         allKeys.addAll(mapFile2.keySet());
 
+        for (String key : allKeys) {
+            Object valueMap1 = mapFile1.get(key);
+            Object valueMap2 = mapFile2.get(key);
+
+            if (!(mapFile1.containsKey(key)) || !(mapFile2.containsKey(key))) {
+                if (!(mapFile1.containsKey(key))) {
+                    differList.add(new NodeName(NodeStatus.ADDED, key, valueMap2, null));
+                } else {
+                    differList.add(new NodeName(NodeStatus.REMOVED, key, valueMap1, null));
+                }
+            } else {
+                if (Objects.equals(valueMap1, valueMap2)) {
+                    differList.add(new NodeName(NodeStatus.UNCHANGED, key, valueMap1, valueMap2));
+                } else {
+                    differList.add(new NodeName(NodeStatus.UPDATED, key, valueMap1, valueMap2));
+                }
+            }
+        }
+
+
+        /*
         for (String key : allKeys) {
             Object valueMap1 = mapFile1.get(key);
             Object valueMap2 = mapFile2.get(key);
@@ -36,6 +63,9 @@ public class Differ {
                 differList.add(new NodeName(NodeStatus.REMOVED, key, valueMap1, null));
             }
         }
+
+         */
+
         return differList;
     }
 
