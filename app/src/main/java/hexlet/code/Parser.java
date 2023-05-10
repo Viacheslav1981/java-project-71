@@ -10,7 +10,7 @@ import java.util.TreeMap;
 
 public class Parser {
 
-    public static TreeMap<String, Object> parseFile(String fileContent,
+    public static TreeMap<String, ?> parseFile(String fileContent,
                                                     String extension)
             throws NoSuchFileException, JsonProcessingException {
 

@@ -14,8 +14,8 @@ import java.util.TreeMap;
 
 public class Differ {
 
-    public static List<NodeName> getDifferList(Map<String, Object> mapFile1,
-                                               Map<String, Object> mapFile2) {
+    public static List<NodeName> getDifferList(Map<String, ?> mapFile1,
+                                               Map<String, ?> mapFile2) {
 
         List<NodeName> differList = new ArrayList<>();
         Set<String> allKeys = new TreeSet<>();
@@ -41,29 +41,6 @@ public class Differ {
                 }
             }
         }
-        /*
-        for (String key : allKeys) {
-            Object valueMap1 = mapFile1.get(key);
-            Object valueMap2 = mapFile2.get(key);
-
-            if (mapFile1.containsKey(key) && (mapFile2.containsKey(key))) {
-                if (Objects.equals(valueMap1, valueMap2)) {
-                    differList.add(new NodeName(NodeStatus.UNCHANGED, key, valueMap1, valueMap2));
-
-                } else {
-                    differList.add(new NodeName(NodeStatus.UPDATED, key, valueMap1, valueMap2));
-                }
-            }
-            if (!(mapFile1.containsKey(key))) {
-                differList.add(new NodeName(NodeStatus.ADDED, key, valueMap2, null));
-            }
-            if (!(mapFile2.containsKey(key))) {
-                differList.add(new NodeName(NodeStatus.REMOVED, key, valueMap1, null));
-            }
-        }
-
-         */
-
         return differList;
     }
 
@@ -78,20 +55,13 @@ public class Differ {
 
     public static String generate(String filepath1, String filepath2, String format) throws Exception {
 
-        Map<String, String> mapForParsing1 = getMapFileContent(filepath1);
-        Map<String, String> mapForParsing2 = getMapFileContent(filepath2);
-
         Map<String, Object> mapFile1 = new TreeMap<>();
         Map<String, Object> mapFile2 = new TreeMap<>();
 
-        for (Map.Entry<String, String> oneFile : mapForParsing1.entrySet()) {
-            mapFile1 = Parser.parseFile(oneFile.getKey(),
-                    oneFile.getValue());
-        }
-        for (Map.Entry<String, String> oneFile : mapForParsing2.entrySet()) {
-            mapFile2 = Parser.parseFile(oneFile.getKey(),
-                    oneFile.getValue());
-        }
+        mapFile1.putAll(Parser.parseFile(getFileContent(filepath1),
+                getExtension(filepath1)));
+        mapFile2.putAll(Parser.parseFile(getFileContent(filepath2),
+                getExtension(filepath2)));
 
         List<NodeName> differList = getDifferList(mapFile1, mapFile2);
 
@@ -99,16 +69,9 @@ public class Differ {
 
     }
 
-    private static Map<String, String> getMapFileContent(String filepath) throws IOException {
-        Map<String, String> fileMap = new TreeMap<>();
-
-        String extension = getExtension(filepath);
+    private static String getFileContent(String filepath) throws IOException {
         Path path = Paths.get(filepath).toAbsolutePath().normalize();
-        String content = Files.readString(path);
-
-        fileMap.put(content, extension);
-
-        return fileMap;
+        return Files.readString(path);
     }
 
 }
