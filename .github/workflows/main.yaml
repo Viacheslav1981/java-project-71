@@ -20,10 +20,13 @@ jobs:
         with:
           arguments: build
           build-root-directory: app
+          
+      - run: chmod +x app/gradlew
+      
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v2.7.1
         env:
-           CC_TEST_REPORTER_ID: 92de45b0576795bd42505a60eb543b2b72511a010e43b503d9824e5b61d48d63
+           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
            JACOCO_SOURCE_PATH: app/src/main/java
         with:
            coverageCommand: make report
