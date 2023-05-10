@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := build-run
 
 clean:
-	./gradlew clean
+    make -C app clean
 
 build:
 	./gradlew clean build
