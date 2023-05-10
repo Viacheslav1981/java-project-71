@@ -34,22 +34,7 @@ public class Represent {
                     differList.add(new NodeName(NodeStatus.REMOVED, key, valueMap1, null));
                 }
             }
-          /*
-            if (!(mapFile1.containsKey(key)) || !(mapFile2.containsKey(key))) {
-                if (!(mapFile1.containsKey(key))) {
-                    differList.add(new NodeName(NodeStatus.ADDED, key, valueMap2, null));
-                } else {
-                    differList.add(new NodeName(NodeStatus.REMOVED, key, valueMap1, null));
-                }
-            } else {
-                if (Objects.equals(valueMap1, valueMap2)) {
-                    differList.add(new NodeName(NodeStatus.UNCHANGED, key, valueMap1, valueMap2));
-                } else {
-                    differList.add(new NodeName(NodeStatus.UPDATED, key, valueMap1, valueMap2));
-                }
-            }
 
-           */
         }
         return differList;
     }
