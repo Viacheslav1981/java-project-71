@@ -10,17 +10,10 @@ import java.util.TreeMap;
 
 public class Differ {
 
-
-
-    public static String getExtension(String filePath) {
-
-        return filePath.substring(filePath.indexOf(".") + 1);
-    }
-
-
     public static String generate(String filepath1, String filepath2) throws Exception {
         return generate(filepath1, filepath2, "stylish");
     }
+
     public static String generate(String filepath1, String filepath2, String format) throws Exception {
 
         Map<String, Object> mapFile1 = new TreeMap<>();
@@ -40,5 +33,10 @@ public class Differ {
     private static String getFileContent(String filepath) throws IOException {
         Path path = Paths.get(filepath).toAbsolutePath().normalize();
         return Files.readString(path);
+    }
+
+    private static String getExtension(String filePath) {
+
+        return filePath.substring(filePath.indexOf(".") + 1);
     }
 }
