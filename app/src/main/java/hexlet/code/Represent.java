@@ -21,6 +21,20 @@ public class Represent {
             Object valueMap1 = mapFile1.get(key);
             Object valueMap2 = mapFile2.get(key);
 
+            if (mapFile1.containsKey(key) && mapFile2.containsKey(key)) {
+                if (Objects.equals(valueMap1, valueMap2)) {
+                    differList.add(new NodeName(NodeStatus.UNCHANGED, key, valueMap1, valueMap2));
+                } else {
+                    differList.add(new NodeName(NodeStatus.UPDATED, key, valueMap1, valueMap2));
+                }
+            } else {
+                if (!(mapFile1.containsKey(key))) {
+                    differList.add(new NodeName(NodeStatus.ADDED, key, valueMap2, null));
+                } else {
+                    differList.add(new NodeName(NodeStatus.REMOVED, key, valueMap1, null));
+                }
+            }
+          /*
             if (!(mapFile1.containsKey(key)) || !(mapFile2.containsKey(key))) {
                 if (!(mapFile1.containsKey(key))) {
                     differList.add(new NodeName(NodeStatus.ADDED, key, valueMap2, null));
@@ -34,6 +48,8 @@ public class Represent {
                     differList.add(new NodeName(NodeStatus.UPDATED, key, valueMap1, valueMap2));
                 }
             }
+
+           */
         }
         return differList;
     }
