@@ -3,14 +3,24 @@ package hexlet.code;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DifferTests {
     private final String fixtures = "src/test/resources/";
     private final String filePath1 = fixtures + "fileJsonNested1.json";
     private final String filePath2 = fixtures + "fileJsonNested2.json";
+
+    @Test
+    public void testFilesExist() {
+        boolean isFile1 = Files.exists(Path.of(filePath1));
+        boolean isFile2 = Files.exists(Path.of(filePath2));
+        assertTrue(isFile1);
+        assertTrue(isFile2);
+    }
 
     @Test
     public void generateTest() throws Exception {
