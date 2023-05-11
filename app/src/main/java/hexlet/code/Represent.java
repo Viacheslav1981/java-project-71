@@ -34,7 +34,6 @@ public class Represent {
                     differList.add(new NodeName(NodeStatus.REMOVED, key, valueMap1, null));
                 }
             }
-
         }
         return differList;
     }
