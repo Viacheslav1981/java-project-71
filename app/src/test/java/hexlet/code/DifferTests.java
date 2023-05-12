@@ -15,6 +15,22 @@ public class DifferTests {
     private final String filePath2 = fixtures + "fileJsonNested2.json";
 
     @Test
+    public void testExtension() {
+        String expected1 = filePath1.substring(filePath1.indexOf(".") + 1);
+        String expected2 = filePath2.substring(filePath2.indexOf(".") + 1);
+
+        boolean isCorrectExtension = false;
+
+        if ((expected1.equals("json") && expected2.equals("json"))
+                || (expected1.equals("yml") && expected2.equals("yml"))) {
+            isCorrectExtension = true;
+        }
+
+        assertTrue(isCorrectExtension);
+
+    }
+
+    @Test
     public void testFilesExist() {
         boolean isFile1 = Files.exists(Path.of(filePath1));
         boolean isFile2 = Files.exists(Path.of(filePath2));
